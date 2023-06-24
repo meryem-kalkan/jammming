@@ -1,0 +1,42 @@
+.Playlist {
+    max-height: 40rem;
+    background-color: #423f3fef;
+    padding: 1.5rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    width: 37%;
+    box-shadow: 0 4px 2px 2px #000;
+}
+
+.Playlist input {
+    border: 0;
+    border-bottom: 0.5px solid;
+    padding: 0.5rem;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.Playlist input:focus {
+    outline: none;
+}
+
+.Playlist button {
+    padding: 0.8rem; 
+    border-radius: 3rem;
+    width: 11rem;
+    text-align: center;
+    background-color: #ec4141;
+    transition: all 0.25s ;
+    border: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #fff;
+    margin: 2rem auto;
+    cursor: pointer;
+}
+
+.Playlist button:hover {
+   background-color: #ec4141c4;  
+}
