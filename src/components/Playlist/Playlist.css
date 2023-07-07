@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     width: 37%;
+    overflow-y: scroll;
     box-shadow: 0 4px 2px 2px #000;
 }
 
@@ -22,7 +23,7 @@
     outline: none;
 }
 
-.Playlist button {
+.Playlist-save {
     padding: 0.8rem; 
     border-radius: 3rem;
     width: 11rem;
@@ -37,6 +38,17 @@
     cursor: pointer;
 }
 
-.Playlist button:hover {
+.Playlist-save:hover {
    background-color: #ec4141c4;  
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+@media only screen and (max-width: 1020px) {
+  .Playlist {
+    width: 90%;
+  }
 }
