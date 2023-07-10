@@ -7,16 +7,13 @@ import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 
 function App() {
-const [searchResults, setSearchResults] = useState([{name: "artist name",
-artist: "artist",
-album: "album",
-id: 1}, {name: "artist name2",
-artist: "artist2",
-album: "album2",
-id: 2}]);
+const [searchResults, setSearchResults] = useState([]);
 const [playlistName, setPlaylistName] = useState("New Playlist");
 const [playlistTracks, setPlaylistTracks] = useState([]);
 
+const search = useCallback((term) => {
+Spotify.search(term).then(setSearchResults);
+}, []);
 const changePlaylistName = useCallback((name) => {
     setPlaylistName(name);
   }, []);
@@ -34,13 +31,21 @@ const changePlaylistName = useCallback((name) => {
     );
   }, []);
 
+  const savePlaylist = useCallback(() => {
+    const trackUris = playlistTracks.map((track) => track.uri);
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+        setPlaylistName("New Playlist");
+        setPlaylistTracks([]);
+    });
+  }, [playlistName, playlistTracks]);
+
     return (
         <div>
             <h1>
                 Ja<span className="highlight">mmm</span>ing
                 </h1>
                 <div className="App">
-                    <SearchBar />
+                    <SearchBar onSearch={search}/>
                     <div className="App-playlist">
                        <SearchResults searchResults={searchResults} onAdd={addTrack}/>
                        <Playlist 
@@ -48,6 +53,7 @@ const changePlaylistName = useCallback((name) => {
                        playlistTracks={playlistTracks}
                        onNameChange={changePlaylistName}
                        onRemove={removeTrack}
+                       onSave={savePlaylist}
                        />
                     </div>
                 </div>
