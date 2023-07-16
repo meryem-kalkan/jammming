@@ -12,8 +12,10 @@ const [playlistName, setPlaylistName] = useState("New Playlist");
 const [playlistTracks, setPlaylistTracks] = useState([]);
 
 const search = useCallback((term) => {
-Spotify.search(term).then(setSearchResults);
+  if(term) {
+Spotify.search(term).then(setSearchResults); }
 }, []);
+
 const changePlaylistName = useCallback((name) => {
     setPlaylistName(name);
   }, []);
