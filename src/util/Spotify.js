@@ -1,4 +1,3 @@
-
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectUri = 'https://jammming-app-000.netlify.app';
 let accessToken;
